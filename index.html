@@ -443,107 +443,41 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
 }
-.brand-section-title {
-  font-size: var(--fs-lg);
-  font-weight: 600;
-  color: var(--navy);
-  margin: var(--space-xl) 0 var(--space-md);
-  text-align: center;
-}
-.brand-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: var(--space-lg);
-}
-.brand-item {
-  background: var(--white);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 140px;
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-}
-.brand-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--blue);
-}
-.brand-item img {
-  max-height: 80px;
-  max-width: 100%;
-  object-fit: contain;
-}
-.brand-fallback {
-  display: none;
-  font-weight: 700;
-  font-size: var(--fs-base);
-  color: var(--navy);
-  text-align: center;
-}
-.brand-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 24px;
-  border: 2px solid var(--blue);
-  border-radius: var(--radius-md);
-  font-weight: 700;
-  font-size: var(--fs-base);
-  color: var(--navy);
-  background: var(--white);
-  transition: background var(--transition), color var(--transition);
-}
-.brand-item:hover .brand-badge {
-  background: var(--blue);
-  color: var(--white);
-}
-
 /* ==========================================================
    Layanan Kami
    ========================================================== */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
-  margin-bottom: var(--space-xl);
-}
-.gallery img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: var(--radius-md);
-  transition: transform var(--transition);
-}
-.gallery img:hover {
-  transform: scale(1.02);
-}
-.gallery-featured {
-  max-width: 800px;
-  margin: var(--space-md) auto 0;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-}
-.gallery-featured img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: var(--radius-md);
-}
 .service-cards {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: var(--space-md);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
 }
 .service-card {
   background: var(--white);
   border-radius: var(--radius-md);
-  padding: var(--space-lg) var(--space-md);
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.service-card-img {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+.service-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition);
+}
+.service-card:hover .service-card-img img {
+  transform: scale(1.04);
+}
+.service-card-body {
+  padding: var(--space-lg) var(--space-md);
   text-align: center;
 }
 .service-card .icon-circle {
@@ -870,8 +804,7 @@ tbody tr:hover { background: var(--off-white); }
    Responsive
    ========================================================== */
 @media (max-width: 1023px) {
-  .service-cards { grid-template-columns: repeat(3, 1fr); }
-  .gallery { grid-template-columns: repeat(2, 1fr); }
+  .service-cards { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 767px) {
@@ -888,12 +821,12 @@ tbody tr:hover { background: var(--off-white); }
   .composite-showcase {
     grid-template-columns: 1fr;
   }
-  .gallery,
   .service-cards,
   .wheel-rim-gallery,
   .equipment-grid {
     grid-template-columns: 1fr;
   }
+  .brand span { display: none; }
   .nav-links {
     position: absolute;
     left: 0;
@@ -945,13 +878,6 @@ tbody tr:hover { background: var(--off-white); }
 .wa-fab:hover {
   transform: scale(1.08);
   box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
-}
-
-@media (max-width: 767px) {
-  .gallery-featured {
-    max-width: 100%;
-    margin: var(--space-sm) 0 0;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1055,7 +981,7 @@ tbody tr:hover { background: var(--off-white); }
       </div>
       <div class="info-card fade-in" style="transition-delay:0.1s">
         <div class="label">Email</div>
-        <div class="value">nostecsinergi@gmail.com</div>
+        <div class="value">hariswicaksnon@nostecgs.com</div>
       </div>
       <div class="info-card fade-in" style="transition-delay:0.15s">
         <div class="label">Akte Notaris Pendirian</div>
@@ -1103,48 +1029,7 @@ tbody tr:hover { background: var(--off-white); }
       <img src="images/img49.webp" alt="Brand composite 1" loading="lazy" onerror="this.style.display='none'" />
       <img src="images/img50.webp" alt="Brand composite 2" loading="lazy" onerror="this.style.display='none'" />
     </div>
-    <h3 class="brand-section-title fade-in">Partner Brand Kami</h3>
-    <div class="brand-grid fade-in" style="transition-delay:0.1s">
-      <div class="brand-item">
-        <img src="images/img48.webp" alt="REMA TIP TOP" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
-        <span class="brand-fallback">REMA TIP TOP</span>
-      </div>
-      <div class="brand-item">
-        <img src="images/img51.webp" alt="TDL" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
-        <span class="brand-fallback">TDL</span>
-      </div>
-      <div class="brand-item">
-        <img src="images/img52.webp" alt="HALTEC CORPORATION" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
-        <span class="brand-fallback">HALTEC CORPORATION</span>
-      </div>
-      <div class="brand-item">
-        <img src="images/img53.webp" alt="FESTO" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
-        <span class="brand-fallback">FESTO</span>
-      </div>
-      <div class="brand-item">
-        <img src="images/img54.webp" alt="TOPU STEEL RIM" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
-        <span class="brand-fallback">TOPU STEEL RIM</span>
-      </div>
-      <div class="brand-item">
-        <img src="images/img55.webp" alt="TECH" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
-        <span class="brand-fallback">TECH</span>
-      </div>
-      <div class="brand-item">
-        <img src="images/img56.webp" alt="BESTPATCH" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
-        <span class="brand-fallback">BESTPATCH</span>
-      </div>
-      <div class="brand-item">
-        <img src="images/img57.webp" alt="GITI" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
-        <span class="brand-fallback">GITI</span>
-      </div>
-      <div class="brand-item">
-        <img src="images/img58.webp" alt="GAJAH TUNGGAL" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
-        <span class="brand-fallback">GAJAH TUNGGAL</span>
-      </div>
-      <div class="brand-item" style="display:flex;align-items:center;justify-content:center;">
-        <span class="brand-badge">LEAO TYRES</span>
-      </div>
-    </div>
+    <!-- Brand partners moved to product sections -->
   </div>
 </section>
 
@@ -1155,43 +1040,56 @@ tbody tr:hover { background: var(--off-white); }
     <div class="divider fade-in"></div>
 
     <h3 style="font-size:var(--fs-xl); color:var(--navy); margin-bottom:var(--space-md);" class="fade-in">Tire Services</h3>
-    <div class="gallery fade-in">
-      <img src="images/img65.webp" alt="Tire technician inspection" loading="lazy" onerror="this.style.display='none'" />
-      <img src="images/img66.webp" alt="Technicians working on OTR tire" loading="lazy" onerror="this.style.display='none'" />
-      <img src="images/img67.webp" alt="Technician checking tire pressure" loading="lazy" onerror="this.style.display='none'" />
-      <img src="images/img68.webp" alt="Close-up tire repair" loading="lazy" onerror="this.style.display='none'" />
-      <img src="images/img69.webp" alt="Technician with tire mounting tool" loading="lazy" onerror="this.style.display='none'" />
-      <img src="images/img70.webp" alt="Tire removal with hand tool" loading="lazy" onerror="this.style.display='none'" />
-    </div>
-    <div class="gallery-featured fade-in">
-      <img src="images/img603.webp" alt="Giti truck with OTR tire showcase" loading="lazy" onerror="this.style.display='none'" />
-    </div>
-
     <div class="service-cards fade-in">
       <div class="service-card">
-        <div class="icon-circle"><i data-lucide="search" style="width:24px;height:24px;"></i></div>
-        <h4>Inspeksi Ban</h4>
-        <p>Pemeriksaan kondisi dan tekanan ban secara berkala untuk armada alat berat</p>
+        <div class="service-card-img">
+          <img src="images/img65.webp" alt="Inspeksi Ban" loading="lazy" onerror="this.style.display='none'" />
+        </div>
+        <div class="service-card-body">
+          <div class="icon-circle"><i data-lucide="search" style="width:24px;height:24px;"></i></div>
+          <h4>Inspeksi Ban</h4>
+          <p>Pemeriksaan kondisi dan tekanan ban secara berkala untuk armada alat berat</p>
+        </div>
       </div>
       <div class="service-card">
-        <div class="icon-circle"><i data-lucide="settings" style="width:24px;height:24px;"></i></div>
-        <h4>Pemasangan & Penggantian</h4>
-        <p>Pemasangan OTR dan TBR tyre untuk truck dan alat berat pertambangan</p>
+        <div class="service-card-img">
+          <img src="images/img69.webp" alt="Pemasangan dan Penggantian" loading="lazy" onerror="this.style.display='none'" />
+        </div>
+        <div class="service-card-body">
+          <div class="icon-circle"><i data-lucide="settings" style="width:24px;height:24px;"></i></div>
+          <h4>Pemasangan & Penggantian</h4>
+          <p>Pemasangan OTR dan TBR tyre untuk truck dan alat berat pertambangan</p>
+        </div>
       </div>
       <div class="service-card">
-        <div class="icon-circle"><i data-lucide="tool" style="width:24px;height:24px;"></i></div>
-        <h4>Repair & Vulkanisir</h4>
-        <p>Perbaikan ban menggunakan material repair terpilih sesuai spesifikasi</p>
+        <div class="service-card-img">
+          <img src="images/img68.webp" alt="Repair dan Vulkanisir" loading="lazy" onerror="this.style.display='none'" />
+        </div>
+        <div class="service-card-body">
+          <div class="icon-circle"><i data-lucide="tool" style="width:24px;height:24px;"></i></div>
+          <h4>Repair & Vulkanisir</h4>
+          <p>Perbaikan ban menggunakan material repair terpilih sesuai spesifikasi</p>
+        </div>
       </div>
       <div class="service-card">
-        <div class="icon-circle"><i data-lucide="clipboard-list" style="width:24px;height:24px;"></i></div>
-        <h4>Maintenance Tire (TMS)</h4>
-        <p>Program pemeliharaan ban terjadwal untuk meminimalkan downtime armada</p>
+        <div class="service-card-img">
+          <img src="images/img67.webp" alt="Maintenance Tire TMS" loading="lazy" onerror="this.style.display='none'" />
+        </div>
+        <div class="service-card-body">
+          <div class="icon-circle"><i data-lucide="clipboard-list" style="width:24px;height:24px;"></i></div>
+          <h4>Maintenance Tire (TMS)</h4>
+          <p>Program pemeliharaan ban terjadwal untuk meminimalkan downtime armada</p>
+        </div>
       </div>
       <div class="service-card">
-        <div class="icon-circle"><i data-lucide="package" style="width:24px;height:24px;"></i></div>
-        <h4>Supply Tool Tyre</h4>
-        <p>Penyediaan peralatan lengkap untuk pengerjaan ban di lokasi tambang</p>
+        <div class="service-card-img">
+          <img src="images/img70.webp" alt="Supply Tool Tyre" loading="lazy" onerror="this.style.display='none'" />
+        </div>
+        <div class="service-card-body">
+          <div class="icon-circle"><i data-lucide="package" style="width:24px;height:24px;"></i></div>
+          <h4>Supply Tool Tyre</h4>
+          <p>Penyediaan peralatan lengkap untuk pengerjaan ban di lokasi tambang</p>
+        </div>
       </div>
     </div>
 
@@ -1367,19 +1265,25 @@ tbody tr:hover { background: var(--off-white); }
         <p style="text-align:center; margin-bottom:var(--space-lg);">Wheel rim berkualitas, dan sudah terbukti digunakan di truck muatan berat.</p>
         <div class="service-cards" style="grid-template-columns: repeat(3, 1fr);">
           <div class="service-card">
-            <div class="icon-circle"><i data-lucide="shield-check" style="width:24px;height:24px;"></i></div>
-            <h4>Kualitas Terjamin</h4>
-            <p>Diproduksi sesuai standar industri alat berat</p>
+            <div class="service-card-body">
+              <div class="icon-circle"><i data-lucide="shield-check" style="width:24px;height:24px;"></i></div>
+              <h4>Kualitas Terjamin</h4>
+              <p>Diproduksi sesuai standar industri alat berat</p>
+            </div>
           </div>
           <div class="service-card">
-            <div class="icon-circle"><i data-lucide="truck" style="width:24px;height:24px;"></i></div>
-            <h4>Proven Heavy Duty</h4>
-            <p>Terbukti untuk truck muatan berat di berbagai medan</p>
+            <div class="service-card-body">
+              <div class="icon-circle"><i data-lucide="truck" style="width:24px;height:24px;"></i></div>
+              <h4>Proven Heavy Duty</h4>
+              <p>Terbukti untuk truck muatan berat di berbagai medan</p>
+            </div>
           </div>
           <div class="service-card">
-            <div class="icon-circle"><i data-lucide="settings-2" style="width:24px;height:24px;"></i></div>
-            <h4>Kompatibel</h4>
-            <p>Tersedia berbagai ukuran untuk berbagai jenis armada</p>
+            <div class="service-card-body">
+              <div class="icon-circle"><i data-lucide="settings-2" style="width:24px;height:24px;"></i></div>
+              <h4>Kompatibel</h4>
+              <p>Tersedia berbagai ukuran untuk berbagai jenis armada</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1398,7 +1302,7 @@ tbody tr:hover { background: var(--off-white); }
           <div class="icon-circle"><i data-lucide="mail" style="width:20px;height:20px;"></i></div>
           <div>
             <h4>Email</h4>
-            <p>nostecsinergi@gmail.com</p>
+            <p>hariswicaksnon@nostecgs.com</p>
           </div>
         </div>
         <div class="contact-item">
