@@ -198,7 +198,7 @@ a { color: inherit; text-decoration: none; }
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('images/img615.jpg');
+  background-image: url('images/img615.webp');
   background-size: cover;
   background-position: center;
   opacity: 0.15;
@@ -425,116 +425,62 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ==========================================================
-   Struktur Manajemen
-   ========================================================== */
-.org-chart {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-}
-.org-level {
-  display: flex;
-  justify-content: center;
-  margin-bottom: var(--space-md);
-  position: relative;
-}
-.org-box {
-  background: var(--navy);
-  color: var(--white);
-  font-weight: 700;
-  font-size: var(--fs-sm);
-  padding: 10px 20px;
-  border-radius: var(--radius-sm);
-  letter-spacing: 0.5px;
-  text-align: center;
-  min-width: 160px;
-}
-.org-children {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-sm);
-  position: relative;
-  padding-top: var(--space-md);
-}
-.org-children::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: var(--space-md);
-  background: var(--blue);
-}
-.org-child-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-.org-child-group::before {
-  content: "";
-  position: absolute;
-  top: calc(-1 * var(--space-md));
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: var(--space-md);
-  background: var(--blue);
-}
-.org-sub-children {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-top: var(--space-md);
-  position: relative;
-  padding-top: var(--space-md);
-}
-.org-sub-children::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: var(--space-md);
-  background: var(--blue);
-}
-
-/* ==========================================================
    Produk Kami — Brand Grid
    ========================================================== */
+.composite-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+.composite-showcase img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.composite-showcase img:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+.brand-section-title {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--navy);
+  margin: var(--space-xl) 0 var(--space-md);
+  text-align: center;
+}
 .brand-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: var(--space-md);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-lg);
 }
 .brand-item {
   background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100px;
+  height: 140px;
   box-shadow: var(--shadow-sm);
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 .brand-item:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-md);
+  border-color: var(--blue);
 }
 .brand-item img {
-  max-height: 60px;
+  max-height: 80px;
   max-width: 100%;
   object-fit: contain;
 }
 .brand-fallback {
   display: none;
   font-weight: 700;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   color: var(--navy);
   text-align: center;
 }
@@ -542,24 +488,18 @@ a { color: inherit; text-decoration: none; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
-  border: 1.5px solid var(--blue);
-  border-radius: var(--radius-sm);
+  padding: 12px 24px;
+  border: 2px solid var(--blue);
+  border-radius: var(--radius-md);
   font-weight: 700;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   color: var(--navy);
   background: var(--white);
+  transition: background var(--transition), color var(--transition);
 }
-.composite-showcase {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-md);
-  margin-bottom: var(--space-lg);
-}
-.composite-showcase img {
-  width: 100%;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
+.brand-item:hover .brand-badge {
+  background: var(--blue);
+  color: var(--white);
 }
 
 /* ==========================================================
@@ -580,6 +520,19 @@ a { color: inherit; text-decoration: none; }
 }
 .gallery img:hover {
   transform: scale(1.02);
+}
+.gallery-featured {
+  max-width: 800px;
+  margin: var(--space-md) auto 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.gallery-featured img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--radius-md);
 }
 .service-cards {
   display: grid;
@@ -881,44 +834,6 @@ tbody tr:hover { background: var(--off-white); }
   color: rgba(255,255,255,0.9);
 }
 
-.form-group {
-  margin-bottom: var(--space-md);
-}
-.form-group label {
-  display: block;
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: rgba(255,255,255,0.9);
-}
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.08);
-  color: var(--white);
-  font-family: inherit;
-  font-size: var(--fs-base);
-  transition: border-color var(--transition), background var(--transition);
-}
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: rgba(255,255,255,0.45);
-}
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--blue);
-  background: rgba(255,255,255,0.12);
-}
-.form-note {
-  font-size: var(--fs-xs);
-  color: rgba(255,255,255,0.5);
-  margin-top: var(--space-sm);
-}
-
 /* ==========================================================
    Footer
    ========================================================== */
@@ -1008,19 +923,35 @@ tbody tr:hover { background: var(--off-white); }
   }
   .nav-link:last-child { border-bottom: 0; }
   .nav-toggle { display: inline-flex; }
-  .org-children {
-    flex-direction: column;
-    align-items: center;
-  }
-  .org-chart .org-children::before,
-  .org-chart .org-child-group::before,
-  .org-chart .org-sub-children::before {
-    display: none;
-  }
-  .org-chart .org-box {
-    margin-bottom: var(--space-sm);
-  }
   .spec-grid { grid-template-columns: 1fr; }
+}
+
+.wa-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.wa-fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+}
+
+@media (max-width: 767px) {
+  .gallery-featured {
+    max-width: 100%;
+    margin: var(--space-sm) 0 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1034,7 +965,7 @@ tbody tr:hover { background: var(--off-white); }
 <nav class="nav" id="navbar">
   <div class="container nav-inner">
     <a href="#beranda" class="brand">
-      <img src="images/Logo.jpg" alt="Nostec Global Sinergi Logo" />
+      <img src="images/Logo.webp" alt="Nostec Global Sinergi Logo" />
       <span>PT. Nostec Global Sinergi</span>
     </a>
     <button class="nav-toggle" aria-label="Menu" id="navToggle">
@@ -1101,7 +1032,7 @@ tbody tr:hover { background: var(--off-white); }
           </div>
         </div>
         <div class="about-media" style="margin-top:var(--space-md);">
-          <img src="images/img616.jpg" alt="Cityscape" loading="lazy" onerror="this.style.display='none'" />
+          <img src="images/img616.webp" alt="Cityscape" loading="lazy" onerror="this.style.display='none'" />
         </div>
       </div>
     </div>
@@ -1134,11 +1065,7 @@ tbody tr:hover { background: var(--off-white); }
         <div class="label">NPWP Perusahaan</div>
         <div class="value">40.842.493.5-447.000</div>
       </div>
-      <div class="info-card fade-in" style="transition-delay:0.25s">
-        <div class="label">Rekening Bank</div>
-        <div class="value">8733207777 — BCA (Cabang Metro Jababeka)</div>
-      </div>
-      <div class="info-card fade-in" style="transition-delay:0.3s; grid-column: 1 / -1;">
+      <div class="info-card fade-in" style="transition-delay:0.25s; grid-column: 1 / -1;">
         <div class="label">Bidang Usaha</div>
         <div class="value">Pengadaan Barang & Jasa; Jasa Maintenance Alat Berat Pertambangan dan Maintenance Tire (TMS)</div>
       </div>
@@ -1166,97 +1093,53 @@ tbody tr:hover { background: var(--off-white); }
   </div>
 </section>
 
-<!-- Struktur Manajemen -->
-<section id="struktur" class="section alt">
-  <div class="container">
-    <h2 class="section-title fade-in">Struktur Manajemen</h2>
-    <div class="divider fade-in"></div>
-    <div class="org-chart fade-in">
-      <div class="org-level">
-        <div class="org-box">KOMISARIS</div>
-      </div>
-      <div class="org-level">
-        <div class="org-box">DIREKTUR</div>
-      </div>
-      <div class="org-children">
-        <div class="org-child-group">
-          <div class="org-box">ADMINISTRASI</div>
-        </div>
-        <div class="org-child-group">
-          <div class="org-box">FINANCE</div>
-          <div class="org-sub-children">
-            <div class="org-box">MARKETING</div>
-          </div>
-        </div>
-        <div class="org-child-group">
-          <div class="org-box">AKUNTING</div>
-          <div class="org-sub-children">
-            <div class="org-box">TRANSPORTASI</div>
-          </div>
-        </div>
-        <div class="org-child-group">
-          <div class="org-box">EKSPEDISI</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Produk Kami -->
 <section id="produk" class="section">
   <div class="container">
     <h2 class="section-title fade-in">Produk Kami</h2>
     <div class="divider fade-in"></div>
-    <p class="fade-in" style="color:var(--muted); margin-bottom:var(--space-lg);">Kami menyediakan produk dari merek-merek terpercaya:</p>
+    <p class="fade-in" style="color:var(--muted); margin-bottom:var(--space-xl); text-align:center; max-width: 60ch; margin-left:auto; margin-right:auto;">Kami menyediakan produk dari merek-merek terpercaya untuk memenuhi kebutuhan pengadaan barang dan jasa Anda.</p>
     <div class="composite-showcase fade-in">
-      <img src="images/img49.jpg" alt="Brand composite 1" loading="lazy" onerror="this.style.display='none'" />
-      <img src="images/img50.jpg" alt="Brand composite 2" loading="lazy" onerror="this.style.display='none'" />
+      <img src="images/img49.webp" alt="Brand composite 1" loading="lazy" onerror="this.style.display='none'" />
+      <img src="images/img50.webp" alt="Brand composite 2" loading="lazy" onerror="this.style.display='none'" />
     </div>
+    <h3 class="brand-section-title fade-in">Partner Brand Kami</h3>
     <div class="brand-grid fade-in" style="transition-delay:0.1s">
       <div class="brand-item">
-        <img src="images/img48.jpg" alt="REMA TIP TOP" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+        <img src="images/img48.webp" alt="REMA TIP TOP" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
         <span class="brand-fallback">REMA TIP TOP</span>
       </div>
       <div class="brand-item">
-        <img src="images/img51.jpg" alt="TDL" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+        <img src="images/img51.webp" alt="TDL" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
         <span class="brand-fallback">TDL</span>
       </div>
       <div class="brand-item">
-        <img src="images/img52.jpg" alt="HALTEC CORPORATION" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+        <img src="images/img52.webp" alt="HALTEC CORPORATION" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
         <span class="brand-fallback">HALTEC CORPORATION</span>
       </div>
       <div class="brand-item">
-        <img src="images/img53.jpg" alt="FESTO" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+        <img src="images/img53.webp" alt="FESTO" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
         <span class="brand-fallback">FESTO</span>
       </div>
       <div class="brand-item">
-        <img src="images/img54.jpg" alt="TOPU STEEL RIM" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+        <img src="images/img54.webp" alt="TOPU STEEL RIM" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
         <span class="brand-fallback">TOPU STEEL RIM</span>
       </div>
       <div class="brand-item">
-        <img src="images/img55.jpg" alt="TECH" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+        <img src="images/img55.webp" alt="TECH" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
         <span class="brand-fallback">TECH</span>
       </div>
       <div class="brand-item">
-        <img src="images/img56.jpg" alt="BESTPATCH" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+        <img src="images/img56.webp" alt="BESTPATCH" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
         <span class="brand-fallback">BESTPATCH</span>
       </div>
       <div class="brand-item">
-        <img src="images/img57.jpg" alt="GITI" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+        <img src="images/img57.webp" alt="GITI" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
         <span class="brand-fallback">GITI</span>
       </div>
       <div class="brand-item">
-        <img src="images/img58.jpg" alt="GAJAH TUNGGAL" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+        <img src="images/img58.webp" alt="GAJAH TUNGGAL" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
         <span class="brand-fallback">GAJAH TUNGGAL</span>
-      </div>
-      <div class="brand-item" style="display:flex;align-items:center;justify-content:center;">
-        <span class="brand-badge">MIKALOR</span>
-      </div>
-      <div class="brand-item" style="display:flex;align-items:center;justify-content:center;">
-        <span class="brand-badge">TOPY</span>
-      </div>
-      <div class="brand-item" style="display:flex;align-items:center;justify-content:center;">
-        <span class="brand-badge">BENCHMARK</span>
       </div>
       <div class="brand-item" style="display:flex;align-items:center;justify-content:center;">
         <span class="brand-badge">LEAO TYRES</span>
@@ -1273,13 +1156,15 @@ tbody tr:hover { background: var(--off-white); }
 
     <h3 style="font-size:var(--fs-xl); color:var(--navy); margin-bottom:var(--space-md);" class="fade-in">Tire Services</h3>
     <div class="gallery fade-in">
-      <img src="images/img65.jpg" alt="Tire technician inspection" loading="lazy" onerror="this.style.display='none'" />
-      <img src="images/img66.jpg" alt="Technicians working on OTR tire" loading="lazy" onerror="this.style.display='none'" />
-      <img src="images/img67.jpg" alt="Technician checking tire pressure" loading="lazy" onerror="this.style.display='none'" />
-      <img src="images/img68.jpg" alt="Close-up tire repair" loading="lazy" onerror="this.style.display='none'" />
-      <img src="images/img69.jpg" alt="Technician with tire mounting tool" loading="lazy" onerror="this.style.display='none'" />
-      <img src="images/img70.jpg" alt="Tire removal with hand tool" loading="lazy" onerror="this.style.display='none'" />
-      <img src="images/img603.jpg" alt="Giti truck with OTR tire showcase" loading="lazy" onerror="this.style.display='none'" style="grid-column: 1 / -1;" />
+      <img src="images/img65.webp" alt="Tire technician inspection" loading="lazy" onerror="this.style.display='none'" />
+      <img src="images/img66.webp" alt="Technicians working on OTR tire" loading="lazy" onerror="this.style.display='none'" />
+      <img src="images/img67.webp" alt="Technician checking tire pressure" loading="lazy" onerror="this.style.display='none'" />
+      <img src="images/img68.webp" alt="Close-up tire repair" loading="lazy" onerror="this.style.display='none'" />
+      <img src="images/img69.webp" alt="Technician with tire mounting tool" loading="lazy" onerror="this.style.display='none'" />
+      <img src="images/img70.webp" alt="Tire removal with hand tool" loading="lazy" onerror="this.style.display='none'" />
+    </div>
+    <div class="gallery-featured fade-in">
+      <img src="images/img603.webp" alt="Giti truck with OTR tire showcase" loading="lazy" onerror="this.style.display='none'" />
     </div>
 
     <div class="service-cards fade-in">
@@ -1313,10 +1198,10 @@ tbody tr:hover { background: var(--off-white); }
     <h3 style="font-size:var(--fs-xl); color:var(--navy); margin: var(--space-2xl) 0 var(--space-md);" class="fade-in">Equipment Services</h3>
     <div class="grid-2 fade-in">
       <div class="equipment-grid">
-        <img src="images/img102.jpg" alt="Field maintenance crane lift" loading="lazy" onerror="this.style.display='none'" />
-        <img src="images/img103.jpg" alt="Workers on haul truck" loading="lazy" onerror="this.style.display='none'" />
-        <img src="images/img104.jpg" alt="Dump truck side view" loading="lazy" onerror="this.style.display='none'" />
-        <img src="images/img105.jpg" alt="Truck tipping operation" loading="lazy" onerror="this.style.display='none'" />
+        <img src="images/img102.webp" alt="Field maintenance crane lift" loading="lazy" onerror="this.style.display='none'" />
+        <img src="images/img103.webp" alt="Workers on haul truck" loading="lazy" onerror="this.style.display='none'" />
+        <img src="images/img104.webp" alt="Dump truck side view" loading="lazy" onerror="this.style.display='none'" />
+        <img src="images/img105.webp" alt="Truck tipping operation" loading="lazy" onerror="this.style.display='none'" />
       </div>
       <div>
         <p>PT. NOSTEC GLOBAL SINERGI juga menyediakan jasa maintenance alat berat pertambangan. Tim kami berpengalaman menangani berbagai jenis alat berat di lokasi tambang.</p>
@@ -1347,7 +1232,7 @@ tbody tr:hover { background: var(--off-white); }
       <!-- GAO802 -->
       <div class="product-card fade-in">
         <div class="product-header">
-          <img src="images/img74.jpg" alt="GITI GAO802 / GAO802M" loading="lazy" onerror="this.style.display='none'" />
+          <img src="images/img74.webp" alt="GITI GAO802 / GAO802M" loading="lazy" onerror="this.style.display='none'" />
           <div class="product-meta">
             <span class="eyebrow">Truck Series – Off/On Road</span>
             <h3>GAO802 / GAO802M</h3>
@@ -1398,12 +1283,12 @@ tbody tr:hover { background: var(--off-white); }
       <!-- GAO822 -->
       <div class="product-card fade-in">
         <div class="product-header">
-          <img src="images/img82.jpg" alt="GITI GAO822" loading="lazy" onerror="this.style.display='none'" />
+          <img src="images/img82.webp" alt="GITI GAO822" loading="lazy" onerror="this.style.display='none'" />
           <div class="product-meta">
             <span class="eyebrow">Off Road</span>
             <h3>GAO822</h3>
             <p>Wheel rim berkualitas, dan sudah terbukti di gunakan di truck muatan berat.</p>
-            <img src="images/img83.jpg" alt="Giti tire with truck" loading="lazy" onerror="this.style.display='none'" style="margin-top:var(--space-md); border-radius:var(--radius-md);" />
+            <img src="images/img83.webp" alt="Giti tire with truck" loading="lazy" onerror="this.style.display='none'" style="margin-top:var(--space-md); border-radius:var(--radius-md);" />
           </div>
         </div>
 
@@ -1430,7 +1315,7 @@ tbody tr:hover { background: var(--off-white); }
       <!-- YINGBA -->
       <div class="product-card fade-in">
         <div class="product-header">
-          <img src="images/img78.jpg" alt="YINGBA 11.00R20 YB607" loading="lazy" onerror="this.style.display='none'" />
+          <img src="images/img78.webp" alt="YINGBA 11.00R20 YB607" loading="lazy" onerror="this.style.display='none'" />
           <div class="product-meta">
             <span class="eyebrow">YINGBA</span>
             <h3>11.00R20 YB607</h3>
@@ -1465,19 +1350,19 @@ tbody tr:hover { background: var(--off-white); }
           <p><strong>Spec Summary:</strong> 15 Amp / 24 Volt, CW, 1 Groove Pulley · NIKKO IR/EF</p>
         </div>
       </div>
-      <img src="images/img87.jpg" alt="WAI starter and alternator units" loading="lazy" onerror="this.style.display='none'" style="width:100%; border-radius:var(--radius-md); margin-top:var(--space-lg);" />
-      <img src="images/img88.jpg" alt="WAI URSA brand banner" loading="lazy" onerror="this.style.display='none'" style="width:100%; border-radius:var(--radius-md); margin-top:var(--space-md);" />
+      <img src="images/img87.webp" alt="WAI starter and alternator units" loading="lazy" onerror="this.style.display='none'" style="width:100%; border-radius:var(--radius-md); margin-top:var(--space-lg);" />
+      <img src="images/img88.webp" alt="WAI URSA brand banner" loading="lazy" onerror="this.style.display='none'" style="width:100%; border-radius:var(--radius-md); margin-top:var(--space-md);" />
       <p class="note" style="text-align:center;">URSA — Heavy Duty Parts and Product</p>
     </div>
 
     <!-- TAB 3: Wheel Rim -->
     <div id="tab-rim" class="tab-panel">
       <div class="fade-in">
-        <img src="images/img610.jpg" alt="Yellow dump truck with Topu Wheel Rim" class="wheel-rim-hero" loading="lazy" onerror="this.style.display='none'" />
+        <img src="images/img610.webp" alt="Yellow dump truck with Topu Wheel Rim" class="wheel-rim-hero" loading="lazy" onerror="this.style.display='none'" />
         <div class="wheel-rim-gallery">
-          <img src="images/img92.jpg" alt="Dark painted steel wheel rim" loading="lazy" onerror="this.style.display='none'" />
-          <img src="images/img93.jpg" alt="Silver steel wheel rim" loading="lazy" onerror="this.style.display='none'" />
-          <img src="images/img94.jpg" alt="Steel wheel rim side profile" loading="lazy" onerror="this.style.display='none'" />
+          <img src="images/img92.webp" alt="Dark painted steel wheel rim" loading="lazy" onerror="this.style.display='none'" />
+          <img src="images/img93.webp" alt="Silver steel wheel rim" loading="lazy" onerror="this.style.display='none'" />
+          <img src="images/img94.webp" alt="Steel wheel rim side profile" loading="lazy" onerror="this.style.display='none'" />
         </div>
         <p style="text-align:center; margin-bottom:var(--space-lg);">Wheel rim berkualitas, dan sudah terbukti digunakan di truck muatan berat.</p>
         <div class="service-cards" style="grid-template-columns: repeat(3, 1fr);">
@@ -1530,29 +1415,20 @@ tbody tr:hover { background: var(--off-white); }
             <p>Jl. Raya Ujung Aspal Terusan AL, No 107, Jatiranggon, Jatisampurna, Kota Bekasi – Jawa Barat</p>
           </div>
         </div>
-        <div class="contact-item">
-          <div class="icon-circle"><i data-lucide="landmark" style="width:20px;height:20px;"></i></div>
-          <div>
-            <h4>Rekening</h4>
-            <p>BCA 8733207777 (Cabang Metro Jababeka)</p>
-          </div>
-        </div>
       </div>
       <div class="fade-in" style="transition-delay:0.15s">
-        <div class="form-group">
-          <label for="nama">Nama</label>
-          <input type="text" id="nama" placeholder="Nama Anda" />
+        <div class="map-embed" style="border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-md);">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.097!2d106.95!3d-6.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMjEnMDAuMCJTIDEwNsKwNTcnMDAuMCJF!5e0!3m2!1sid!2sid!4v1"
+            width="100%"
+            height="320"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Lokasi PT Nostec Global Sinergi">
+          </iframe>
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="email@perusahaan.com" />
-        </div>
-        <div class="form-group">
-          <label for="pesan">Pesan</label>
-          <textarea id="pesan" rows="5" placeholder="Tulis pesan Anda..."></textarea>
-        </div>
-        <button class="btn" type="button" style="width:100%; justify-content:center;">Kirim Pesan</button>
-        <p class="form-note">* Form ini untuk keperluan tampilan. Untuk respons cepat, hubungi via WhatsApp atau email.</p>
       </div>
     </div>
   </div>
@@ -1562,13 +1438,18 @@ tbody tr:hover { background: var(--off-white); }
 <footer class="footer">
   <div class="container">
     <div class="footer-brand">
-      <img src="images/Logo.jpg" alt="Nostec Logo" />
+      <img src="images/Logo.webp" alt="Nostec Logo" />
       <span>PT. Nostec Global Sinergi</span>
     </div>
     <div class="divider light" style="width:80px;"></div>
     <p>© <span id="year"></span> PT. Nostec Global Sinergi. All Rights Reserved.</p>
+    <p style="font-size:var(--fs-xs); color:rgba(255,255,255,0.35); margin-top:var(--space-sm);">dibuat oleh <a href="https://asmorodonitito.my.id" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.5); text-decoration:underline;">asmorodonitito.my.id</a></p>
   </div>
 </footer>
+
+<a href="https://wa.me/6287889328855" class="wa-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
 
 <script>
 /* ==========================================================
