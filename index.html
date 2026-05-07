@@ -439,22 +439,183 @@ a { color: inherit; text-decoration: none; }
 /* ==========================================================
    Produk Kami — Brand Grid
    ========================================================== */
-.composite-showcase {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.brand-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-lg);
-  margin-bottom: var(--space-xl);
 }
-.composite-showcase img {
-  width: 100%;
+.brand-card {
+  flex: 0 0 calc(20% - 1.5rem);
+  max-width: 200px;
+  background: var(--white);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  transition: transform var(--transition), box-shadow var(--transition);
+  padding: var(--space-lg) var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  aspect-ratio: 4 / 3;
 }
-.composite-showcase img:hover {
+.brand-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
+  border-color: var(--light-blue);
 }
+.brand-card img {
+  width: 100%;
+  height: 70px;
+  object-fit: contain;
+  pointer-events: none;
+}
+@media (max-width: 1023px) {
+  .brand-card { flex: 0 0 calc(25% - 1.5rem); }
+}
+@media (max-width: 767px) {
+  .brand-card { flex: 0 0 calc(33.333% - 1.5rem); }
+}
+@media (max-width: 479px) {
+  .brand-card { flex: 0 0 calc(50% - 1.5rem); }
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(13, 31, 60, 0.85);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+.lightbox-inner {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.92) translateY(12px);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lightbox.active .lightbox-inner {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+.lightbox.closing .lightbox-inner {
+  transform: scale(0.96) translateY(8px);
+  opacity: 0;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.lightbox.closing {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.lightbox-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  border: 3px solid var(--white);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+}
+.lightbox-close:hover {
+  background: var(--blue);
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+.lightbox-img {
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  display: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.lightbox-img.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+.lightbox-spinner {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl) var(--space-xl);
+  text-align: center;
+  gap: var(--space-md);
+  min-height: 300px;
+}
+.lightbox-spinner.active {
+  display: flex;
+}
+.lightbox-spinner .spinner {
+  animation: spin 1s linear infinite;
+  color: var(--blue);
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.lightbox-placeholder {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl) var(--space-xl);
+  text-align: center;
+  gap: var(--space-md);
+  min-height: 300px;
+}
+.lightbox-placeholder.active {
+  display: flex;
+}
+.lightbox-placeholder .ph-icon {
+  color: var(--blue);
+}
+.lightbox-placeholder h4 {
+  font-size: var(--fs-xl);
+  color: var(--navy);
+  font-weight: 700;
+}
+.lightbox-placeholder p {
+  color: var(--muted);
+  font-size: var(--fs-base);
+}
+@media (max-width: 767px) {
+  .lightbox-close {
+    top: 10px;
+    right: 10px;
+    border-width: 2px;
+  }
+}
+
 /* ==========================================================
    Layanan Kami
    ========================================================== */
@@ -1037,11 +1198,21 @@ tbody tr:hover { background: var(--off-white); }
     <h2 class="section-title fade-in">Produk Kami</h2>
     <div class="divider fade-in"></div>
     <p class="fade-in" style="color:var(--muted); margin-bottom:var(--space-xl); text-align:center; max-width: 60ch; margin-left:auto; margin-right:auto;">Kami menyediakan produk dari merek-merek terpercaya untuk memenuhi kebutuhan pengadaan barang dan jasa Anda.</p>
-    <div class="composite-showcase fade-in">
-      <img src="images/img49.webp" alt="Brand composite 1" loading="lazy" onerror="this.style.display='none'" />
-      <img src="images/img50.webp" alt="Brand composite 2" loading="lazy" onerror="this.style.display='none'" />
+    <div class="brand-grid fade-in">
+      <button type="button" class="brand-card" data-brochure="images/brosur-rema_tip_top.jpg" aria-label="Lihat brosur Rema Tip Top"><img src="images/02_rema_tip_top.png" alt="Rema Tip Top" loading="lazy"></button>
+      <button type="button" class="brand-card" data-brochure="images/brosur-tdl.jpg" aria-label="Lihat brosur TDL"><img src="images/03_tdl.png" alt="TDL" loading="lazy"></button>
+      <button type="button" class="brand-card" data-brochure="images/brosur-haltec.jpg" aria-label="Lihat brosur Haltec"><img src="images/04_haltec.png" alt="Haltec" loading="lazy"></button>
+      <button type="button" class="brand-card" data-brochure="images/brosur-tech.jpg" aria-label="Lihat brosur Tech"><img src="images/05_tech.png" alt="Tech" loading="lazy"></button>
+      <button type="button" class="brand-card" data-brochure="images/brosur-festo.jpg" aria-label="Lihat brosur Festo"><img src="images/06_festo.png" alt="Festo" loading="lazy"></button>
+      <button type="button" class="brand-card" data-brochure="images/brosur-bestpatch.jpg" aria-label="Lihat brosur Bestpatch"><img src="images/07_bestpatch.png" alt="Bestpatch" loading="lazy"></button>
+      <button type="button" class="brand-card" data-brochure="images/brosur-topu.jpg" aria-label="Lihat brosur Topu"><img src="images/08_topu.png" alt="Topu" loading="lazy"></button>
+      <button type="button" class="brand-card" data-brochure="images/brosur-mikalor.jpg" aria-label="Lihat brosur Mikalor"><img src="images/09_mikalor.png" alt="Mikalor" loading="lazy"></button>
+      <button type="button" class="brand-card" data-brochure="images/brosur-topy.jpg" aria-label="Lihat brosur Topy"><img src="images/10_topy.png" alt="Topy" loading="lazy"></button>
+      <button type="button" class="brand-card" data-brochure="images/brosur-gajah_tunggal.jpg" aria-label="Lihat brosur Gajah Tunggal"><img src="images/11_gajah_tunggal.png" alt="Gajah Tunggal" loading="lazy"></button>
+      <button type="button" class="brand-card" data-brochure="images/brosur-giti.jpg" aria-label="Lihat brosur Giti"><img src="images/12_giti.png" alt="Giti" loading="lazy"></button>
+      <button type="button" class="brand-card" data-brochure="images/brosur-benchmark.jpg" aria-label="Lihat brosur Benchmark"><img src="images/13_benchmark.png" alt="Benchmark" loading="lazy"></button>
+      <button type="button" class="brand-card" data-brochure="images/brosur-leao.jpg" aria-label="Lihat brosur Leao"><img src="images/14_leao.png" alt="Leao" loading="lazy"></button>
     </div>
-    <!-- Brand partners moved to product sections -->
   </div>
 </section>
 
@@ -1334,7 +1505,7 @@ tbody tr:hover { background: var(--off-white); }
       <div class="fade-in" style="transition-delay:0.15s">
         <div class="map-embed" style="border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-md);">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.097!2d106.95!3d-6.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMjEnMDAuMCJTIDEwNsKwNTcnMDAuMCJF!5e0!3m2!1sid!2sid!4v1"
+            src="https://www.google.com/maps?q=-6.3373333,106.9257222&z=16&hl=id&output=embed"
             width="100%"
             height="320"
             style="border:0;"
@@ -1447,10 +1618,127 @@ function initTabs() {
 }
 initTabs();
 
+// Brochure lightbox — initialize after DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxSpinner = document.getElementById('lightboxSpinner');
+    const lightboxPlaceholder = document.getElementById('lightboxPlaceholder');
+    const lightboxClose = document.getElementById('lightboxClose');
+    if (!lightbox || !lightboxImg || !lightboxSpinner || !lightboxPlaceholder) {
+      console.warn('[Lightbox] Required elements not found. Skipping initialization.');
+      return;
+    }
+    let scrollY = 0;
+    let scrollbarWidth = 0;
+
+    function getScrollbarWidth() {
+      return window.innerWidth - document.documentElement.clientWidth;
+    }
+
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightboxImg.classList.remove('show');
+      lightboxImg.style.display = 'none';
+      lightboxSpinner.classList.add('active');
+      lightboxPlaceholder.classList.remove('active');
+      lightbox.classList.remove('closing');
+      lightbox.classList.add('active');
+      scrollY = window.scrollY;
+      scrollbarWidth = getScrollbarWidth();
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+      if (lightboxClose) lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+      if (!lightbox.classList.contains('active')) return;
+      lightbox.classList.add('closing');
+      setTimeout(() => {
+        lightbox.classList.remove('active', 'closing');
+        lightboxImg.src = '';
+        lightboxImg.classList.remove('show');
+        lightboxImg.style.display = 'none';
+        lightboxSpinner.classList.remove('active');
+        lightboxPlaceholder.classList.remove('active');
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.paddingRight = '';
+        window.scrollTo(0, scrollY);
+      }, 250);
+    }
+
+    lightboxImg.addEventListener('load', () => {
+      lightboxSpinner.classList.remove('active');
+      lightboxImg.style.display = 'block';
+      requestAnimationFrame(() => lightboxImg.classList.add('show'));
+    });
+    lightboxImg.addEventListener('error', () => {
+      lightboxSpinner.classList.remove('active');
+      lightboxPlaceholder.classList.add('active');
+    });
+
+    document.querySelectorAll('.brand-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const brochure = card.dataset.brochure;
+        if (brochure) openLightbox(brochure);
+      });
+    });
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightbox) lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) closeLightbox();
+    });
+
+    // Focus trap inside lightbox
+    lightbox.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab' || !lightbox.classList.contains('active')) return;
+      const focusables = lightbox.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+  } catch (err) {
+    console.error('[Lightbox] Initialization error:', err);
+  }
+});
+
 // Footer year
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 </script>
+
+<!-- Brochure Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Brochure viewer">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Tutup">
+      <i data-lucide="x" style="width:20px;height:20px;"></i>
+    </button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Brochure">
+    <div class="lightbox-spinner" id="lightboxSpinner">
+      <div class="spinner"><i data-lucide="loader-2" style="width:40px;height:40px;"></i></div>
+    </div>
+    <div class="lightbox-placeholder" id="lightboxPlaceholder">
+      <div class="ph-icon"><i data-lucide="file-image" style="width:48px;height:48px;"></i></div>
+      <h4>Brosur sedang diupdate</h4>
+      <p>Brochure untuk brand ini akan segera tersedia.</p>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
